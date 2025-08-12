@@ -1,3 +1,4 @@
+//clublist
 const clubs = [
   {
     name: "TEST 1 과학",
@@ -68,12 +69,12 @@ function filterClubs() {
       <div class="club-description">${club.description}</div>
       <div class="club-tags">${club.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
     `;
-    div.onclick = () => showClubModal(club); // 🔥 Makes the card clickable
+    div.onclick = () => showClubModal(club); //clickablecard
     list.appendChild(div);
   });
 }
 
-// 🔍 Modal functionality
+//modalfuncailty
 function showClubModal(club) {
   document.getElementById('modalName').textContent = club.name;
   document.getElementById('modalType').textContent = club.type;
@@ -93,7 +94,7 @@ window.addEventListener('click', (e) => {
   }
 });
 
-// 🌙 Dark Mode Toggle
+//darkmode
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("toggleModeBtn");
 
@@ -106,3 +107,4 @@ document.addEventListener("DOMContentLoaded", function () {
   createTagButtons();
   filterClubs();
 });
+
