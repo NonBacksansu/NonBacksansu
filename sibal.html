@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Club Finder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>I am interested in...</h1>
+  <button id="toggleModeBtn">Switch to Light Mode</button>
+  <input class="search-bar" type="text" placeholder="Type a subject..." oninput="filterClubs()" id="searchInput" />
+  <div class="tag-buttons" id="tagButtons"></div>
+  <div class="club-list" id="clubList"></div>
+
+<div id="clubModal" class="modal hidden">
+  <div class="modal-content">
+    <span id="closeModal" class="close-button">&times;</span>
+    <h2 id="modalName"></h2>
+    <p><strong>Type:</strong> <span id="modalType"></span></p>
+    <p><strong>Description:</strong></p>
+    <p id="modalDescription"></p>
+    <p><strong>Tags:</strong> <span id="modalTags"></span></p>
+  </div>
+</div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
