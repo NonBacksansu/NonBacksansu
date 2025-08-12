@@ -113,12 +113,12 @@
   }
   
 
-/* Smooth transition */
+/*smoothtransition */
 body, .club-card, .tag-button, .search-bar, .club-tags span {
     transition: background 0.3s ease, color 0.3s ease;
   }
   
-  /* Stylish toggle button */
+  /*togglebutton*/
   #toggleModeBtn {
     padding: 0.5rem 1.2rem;
     background-color: #333;
@@ -196,4 +196,5 @@ body, .club-card, .tag-button, .search-bar, .club-tags span {
     background: #1e1e1e;
     color: #f0f0f0;
   }
+
   
