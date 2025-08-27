@@ -1,28 +1,34 @@
 //clublist
 const clubs = [
   {
-    name: "TEST 1 과학",
-    type: "Club",
-    tags: ["Science"],
-    description: "TEST 1 설명"
+    name: "Youth Medical Society",
+    type: "Society",
+    tags: ["Medical"],
+    description: "Society where students can gain innvative opportunities about careers about medicals"
   },
   {
-    name: "TEST 1 수학",
-    type: "Club",
-    tags: ["Math"],
-    description: "TEST 1 설명"
+    name: "Youth Art Society",
+    type: "Society",
+    tags: ["Art"],
+    description: "The Youth Art Society is a community where young people create and share art"
   },
   {
-    name: "TEST 1 영어",
-    type: "Club",
-    tags: ["English"],
-    description: "TEST 1 설명"
+    name: "Youth Innovators Society",
+    type: "Society",
+    tags: ["STEM"],
+    description: "The Youth Innovators Society is a community where young people explore and create through STEM"
   },
   {
-    name: "morris",
+    name: "Youth Business Society",
+    type: "Society",
+    tags: ["Business"],
+    description: "The Youth Business Society is a community where young people learn and practice entrepreneurship"
+  },
+  {
+    name: "*",
     type: "Club",
-    tags: ["morris math"],
-    description: "TEST 1 설명"
+    tags: ["*"],
+    description: "*"
   },
 ];
 
@@ -107,4 +113,5 @@ document.addEventListener("DOMContentLoaded", function () {
   createTagButtons();
   filterClubs();
 });
+
 
