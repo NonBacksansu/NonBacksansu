@@ -1,35 +1,67 @@
 //clublist
 const clubs = [
   {
-    name: "Youth Medical Society",
-    type: "Society",
-    tags: ["Medical"],
-    description: "Society where students can gain innvative opportunities about careers about medicals"
+    name: "School Orchestra MSHS",
+    type: "Music Club",
+    tags: ["Music"],
+    description: "A school orchestra for middle and high school students.",
+    schedule: "Tuesday, 2:10–3:30 PM",
+    supervisor: "Mr. Patrick, Ms. Dominga"
   },
+
   {
-    name: "Youth Art Society",
-    type: "Society",
-    tags: ["Art"],
-    description: "The Youth Art Society is a community where young people create and share art"
+    name: "Basketball HS",
+    type: "Sports Club",
+    tags: ["Sports"],
+    description: "High school basketball training and competition team.",
+    schedule: "Monday–Wednesday, 3:30–5:30 PM",
+    supervisor: "Ms. Alma"
   },
+
   {
-    name: "Youth Innovators Society",
-    type: "Society",
+    name: "Soccer MS",
+    type: "Sports Club",
+    tags: ["Sports"],
+    description: "Middle school soccer training.",
+    schedule: "Tuesday & Thursday, 2:30–4:00 PM",
+    supervisor: "Mr. Akbar"
+  },
+
+  {
+    name: "Robotics & AI",
+    type: "STEM Club",
     tags: ["STEM"],
-    description: "The Youth Innovators Society is a community where young people explore and create through STEM"
+    description: "Robotics and AI projects for high school students.",
+    schedule: "Tuesday, 3:30–5:00 PM",
+    supervisor: "Ms. Savita"
   },
+
   {
-    name: "Youth Business Society",
-    type: "Society",
-    tags: ["Business"],
-    description: "The Youth Business Society is a community where young people learn and practice entrepreneurship"
+    name: "Go Mandarin!",
+    type: "Language Club",
+    tags: ["Language"],
+    description: "Mandarin language learning club.",
+    schedule: "Wednesday, 2:10–3:30 PM",
+    supervisor: "Ms. Reta"
   },
+
   {
-    name: "*",
-    type: "Club",
-    tags: ["*"],
-    description: "*"
+    name: "Chess Club",
+    type: "Strategy Club",
+    tags: ["Sports"],
+    description: "Chess club to develop logical and strategic thinking.",
+    schedule: "Thursday, 2:10–3:30 PM",
+    supervisor: "Ms. Monica V."
   },
+
+  {
+    name: "TeenAiders Club",
+    type: "Service Club",
+    tags: ["SA"],
+    description: "Student volunteer club under the Indonesian Red Cross.",
+    schedule: "Friday, 1:00–2:30 PM",
+    supervisor: "Nurse Maria, Mr. Zaidan"
+  }
 ];
 
 let selectedTag = "";
@@ -70,11 +102,16 @@ function filterClubs() {
     const div = document.createElement('div');
     div.className = 'club-card';
     div.innerHTML = `
-      <div class="club-name">${club.name}</div>
-      <div class="club-type">${club.type}</div>
-      <div class="club-description">${club.description}</div>
-      <div class="club-tags">${club.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
-    `;
+    <div class="club-name">${club.name}</div>
+    <div class="club-type">${club.type}</div>
+    <div class="club-description">${club.description}</div>
+    <div class="club-tags">
+      ${club.tags.map(tag => `<span>${tag}</span>`).join("")}
+    </div>
+    <div class="club-footer">
+      To register / further information, contact the supervisor via Teams
+    </div>
+  `;  
     div.onclick = () => showClubModal(club); //clickablecard
     list.appendChild(div);
   });
@@ -82,16 +119,18 @@ function filterClubs() {
 
 //modalfuncailty
 function showClubModal(club) {
-  document.getElementById('modalName').textContent = club.name;
-  document.getElementById('modalType').textContent = club.type;
-  document.getElementById('modalDescription').textContent = club.description;
-  document.getElementById('modalTags').innerHTML = club.tags.map(tag => `<span>${tag}</span>`).join(', ');
-  document.getElementById('clubModal').classList.remove('hidden');
+  document.getElementById("modalName").textContent = club.name;
+  document.getElementById("modalType").textContent = club.type;
+  document.getElementById("modalDescription").textContent = club.description;
+  document.getElementById("modalSchedule").textContent = club.schedule;
+  document.getElementById("modalSupervisor").textContent = club.supervisor;
+
+  document.getElementById("modalTags").innerHTML =
+    club.tags.map(tag => `<span class="modal-tag">${tag}</span>`).join("");
+
+  document.getElementById("clubModal").classList.remove("hidden");
 }
 
-document.getElementById('closeModal').addEventListener('click', () => {
-  document.getElementById('clubModal').classList.add('hidden');
-});
 
 window.addEventListener('click', (e) => {
   const modal = document.getElementById('clubModal');
@@ -113,5 +152,3 @@ document.addEventListener("DOMContentLoaded", function () {
   createTagButtons();
   filterClubs();
 });
-
-
