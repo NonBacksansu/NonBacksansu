@@ -1,67 +1,157 @@
 //clublist
 const clubs = [
   {
-    name: "School Orchestra MSHS",
-    type: "Music Club",
-    tags: ["Music"],
-    description: "A school orchestra for middle and high school students.",
-    schedule: "Tuesday, 2:10–3:30 PM",
-    supervisor: "Mr. Patrick, Ms. Dominga"
+    name: "Korean Culture Club",
+    type: "Culture Club",
+    tags: ["Language"],
+    description: "Explores Korean culture, traditions, and modern trends. Open for Grades 6–12.",
+    schedule: "7:00–8:00 PM",
+    supervisor: "Ms. Helen"
   },
-
+  {
+    name: "Tech Buzz",
+    type: "Technology Club",
+    tags: ["STEM"],
+    description: "Hands-on technology activities for middle school students. Open for Grades 6–9.",
+    schedule: "2:50–4:00 PM",
+    supervisor: "Mr. Nikhil"
+  },
+  {
+    name: "PRAMUKA",
+    type: "Leadership Club",
+    tags: ["Leadership"],
+    description: "Scouting activities focused on leadership, discipline, and teamwork. Open for Grades 6–8.",
+    schedule: "3:00–4:15 PM",
+    supervisor: "Ms. Elsya, Ms. Maria G."
+  },
+  {
+    name: "Basketball MS Boys",
+    type: "Sports Club",
+    tags: ["Sports"],
+    description: "Competitive basketball training for middle school boys. Includes jersey. Open for Grades 7–9.",
+    schedule: "Monday & Thursday, 2:50–4:00 PM",
+    supervisor: "Coach Tri, Coach Pardo"
+  },
+  {
+    name: "Culinary Club",
+    type: "Lifestyle Club",
+    tags: ["Cooking"],
+    description: "Practical cooking skills taught through Junior Chef programs. Open for Grades 6–10.",
+    schedule: "3:00–4:15 PM",
+    supervisor: "Ms. Evi"
+  },
+  {
+    name: "MUN Club",
+    type: "Academic Club",
+    tags: ["Leadership"],
+    description: "Model United Nations training with structured sessions led by SpeakUp Academy. Open for Grades 6–11.",
+    schedule: "3:00–4:00 PM",
+    supervisor: "Ms. Elisabeth, Mr. Luke, Ms. Maria Fe, Ms. Rizky"
+  },
   {
     name: "Basketball HS",
     type: "Sports Club",
     tags: ["Sports"],
-    description: "High school basketball training and competition team.",
-    schedule: "Monday–Wednesday, 3:30–5:30 PM",
-    supervisor: "Ms. Alma"
+    description: "High school competitive basketball training. Includes jersey. Open for Grades 10–11.",
+    schedule: "Monday–Wednesday, 4:00–6:00 PM",
+    supervisor: "Coach Tri, Coach Alan"
   },
-
   {
-    name: "Soccer MS",
+    name: "School Orchestra MSHS",
+    type: "Music Club",
+    tags: ["Music"],
+    description: "School orchestra for middle and high school students. Open for Grades 6–11.",
+    schedule: "2:10–3:30 PM",
+    supervisor: "Mr. Patrick, Ms. Dominga"
+  },
+  {
+    name: "Descartesian Club",
+    type: "Academic Club",
+    tags: ["STEM"],
+    description: "Mathematics enrichment club led by the math department. Open for Grades 6–11.",
+    schedule: "2:10–3:30 PM",
+    supervisor: "Ms. Leah"
+  },
+  {
+    name: "Warta Aksara",
+    type: "Media Club",
+    tags: ["Writings"],
+    description: "Student publication club focused on writing and media production. Open for Grades 8–10.",
+    schedule: "2:10–3:30 PM",
+    supervisor: "Ms. Elsya, Mr. Hafidz"
+  },
+  {
+    name: "Table Tennis Club",
     type: "Sports Club",
     tags: ["Sports"],
-    description: "Middle school soccer training.",
-    schedule: "Tuesday & Thursday, 2:30–4:00 PM",
-    supervisor: "Mr. Akbar"
+    description: "Table tennis training and recreational play. Open for Grades 6–10.",
+    schedule: "2:10–3:30 PM",
+    supervisor: "Mr. R. Ricky"
   },
-
+  {
+    name: "Singing Club",
+    type: "Music Club",
+    tags: ["Music"],
+    description: "Vocal training and group singing practice. Open for Grades 3–9.",
+    schedule: "2:10–3:30 PM",
+    supervisor: "Ms. Claudya"
+  },
+  {
+    name: "Karate Club",
+    type: "Martial Arts Club",
+    tags: ["Sports"],
+    description: "Kyokushinkai karate training including uniform and belt exams. Open for Grades 6–10.",
+    schedule: "Tuesday & Thursday, 2:10–3:30 PM",
+    supervisor: "Kyokushinkai Karate-Do Indonesia"
+  },
+  {
+    name: "Debate Club",
+    type: "Academic Club",
+    tags: ["Leadership"],
+    description: "Debate training program conducted by SpeakUp Academy. Open for Grades 6–9.",
+    schedule: "2:10–3:30 PM",
+    supervisor: "SpeakUp Academy"
+  },
+  {
+    name: "Game Design & Development",
+    type: "Technology Club",
+    tags: ["STEM"],
+    description: "Introduction to game development concepts and coding. Open for Grades 6–9.",
+    schedule: "2:10–3:30 PM",
+    supervisor: "Ms. Tima"
+  },
   {
     name: "Robotics & AI",
-    type: "STEM Club",
+    type: "Technology Club",
     tags: ["STEM"],
-    description: "Robotics and AI projects for high school students.",
-    schedule: "Tuesday, 3:30–5:00 PM",
+    description: "Advanced robotics and artificial intelligence projects. Open for Grades 10–11.",
+    schedule: "3:30–5:00 PM",
     supervisor: "Ms. Savita"
   },
-
   {
-    name: "Go Mandarin!",
-    type: "Language Club",
-    tags: ["Language"],
-    description: "Mandarin language learning club.",
-    schedule: "Wednesday, 2:10–3:30 PM",
-    supervisor: "Ms. Reta"
+    name: "Code for Change",
+    type: "Technology Club",
+    tags: ["STEM"],
+    description: "Coding projects aimed at solving real-world problems. Open for Grades 10–11.",
+    schedule: "3:30–5:00 PM",
+    supervisor: "Ms. Tima"
   },
-
   {
     name: "Chess Club",
     type: "Strategy Club",
     tags: ["Sports"],
-    description: "Chess club to develop logical and strategic thinking.",
-    schedule: "Thursday, 2:10–3:30 PM",
+    description: "Strategic thinking and chess skill development. Open for Grades 6–10.",
+    schedule: "2:10–3:30 PM",
     supervisor: "Ms. Monica V."
   },
-
   {
-    name: "TeenAiders Club",
-    type: "Service Club",
-    tags: ["SA"],
-    description: "Student volunteer club under the Indonesian Red Cross.",
-    schedule: "Friday, 1:00–2:30 PM",
-    supervisor: "Nurse Maria, Mr. Zaidan"
-  }
+    name: "Global Issue Network (GIN)",
+    type: "Academic Club",
+    tags: ["Leadership"],
+    description: "Discussion-based club focused on global challenges and action. Open for Grades 6–12.",
+    schedule: "3:00–4:00 PM",
+    supervisor: "Ms. Elisabeth, Ms. Ravinder"
+  }  
 ];
 
 let selectedTag = "";
