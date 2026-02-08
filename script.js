@@ -154,6 +154,15 @@ const clubs = [
   }  
 ];
 
+const majorMap = {
+  Engineering: ["STEM"],
+  Business: ["Leadership"],
+  Medicine: ["STEM"],
+  Arts: ["Music", "Writings"],
+  Law: ["Leadership"]
+};
+
+
 let selectedTag = "";
 
 function createTagButtons() {
@@ -242,3 +251,60 @@ document.addEventListener("DOMContentLoaded", function () {
   createTagButtons();
   filterClubs();
 });
+// Chatbot Logic
+const chatbotBtn = document.getElementById("chatbotBtn");
+const chatbotWindow = document.getElementById("chatbotWindow");
+const closeChat = document.getElementById("closeChat");
+const sendChat = document.getElementById("sendChat");
+const chatInput = document.getElementById("chatInput");
+const chatBody = document.getElementById("chatBody");
+
+chatbotBtn.onclick = () => {
+  chatbotWindow.classList.remove("hidden");
+};
+
+closeChat.onclick = () => {
+  chatbotWindow.classList.add("hidden");
+};
+
+
+sendChat.onclick = sendMessage;
+chatInput.addEventListener("keypress", e => {
+  if (e.key === "Enter") sendMessage();
+});
+
+function sendMessage() {
+  const msg = chatInput.value.trim();
+  if (!msg) return;
+
+  appendMessage(msg, "user-message");
+  chatInput.value = "";
+
+  setTimeout(() => {
+    botReply(msg);
+  }, 600);
+}
+
+function appendMessage(text, className) {
+  const div = document.createElement("div");
+  div.className = className;
+  div.textContent = text;
+  chatBody.appendChild(div);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function botReply(message) {
+  const lower = message.toLowerCase();
+
+  let reply = "I can help you find clubs by interest, type, or schedule!";
+
+  if (lower.includes("sport")) reply = "We have Basketball, Table Tennis, Karate, and Chess clubs 🏀";
+  else if (lower.includes("stem") || lower.includes("tech"))
+    reply = "Check out Tech Buzz, Robotics & AI, Game Design, or Code for Change 💻";
+  else if (lower.includes("music"))
+    reply = "You might like Orchestra or Singing Club 🎵";
+  else if (lower.includes("leadership"))
+    reply = "MUN, Debate, PRAMUKA, and GIN are great leadership options 🌍";
+
+  appendMessage(reply, "bot-message");
+}
