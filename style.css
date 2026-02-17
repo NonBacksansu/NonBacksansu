@@ -177,7 +177,9 @@ body.fade.show {
 .modal.hidden {
   display: none;
 }
-
+.hidden {
+  display: none !important;
+}
 .modal-content {
   background: white;
   padding: 2rem;
@@ -311,7 +313,7 @@ body.dark-mode .bot-message {
 
 .chat-input input {
   flex: 1;
-  border: none;
+  border: none; 
   padding: 0.6rem;
   outline: none;
 }
@@ -326,6 +328,18 @@ body.dark-mode .bot-message {
 
 .hidden {
   display: none;
+}
+/* Ensure chat input is visible in dark mode */
+body.dark-mode .chat-input input {
+  background: #2a2a2a;
+  color: white;
+}
+
+/* Better user message color for visibility */
+.user-message {
+  background: #007bff; /* A nice blue stands out better */
+  color: white;
+  margin-left: auto;
 }
 
 
