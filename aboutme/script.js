@@ -43,8 +43,8 @@
                 loader.style.display = 'none';
                 document.getElementById('content').classList.remove('hidden');
                 animateBars();
-            }, 400);
-        }, 800);
+            }, 200);
+        }, 200);
     });
 
     // 5. Interactive Go Back Button Effect
@@ -57,3 +57,4 @@
     });
 
 }
+
