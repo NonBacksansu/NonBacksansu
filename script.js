@@ -231,6 +231,57 @@ function showClubModal(club) {
 }
 
 
+
+// --- ALL EVENT LISTENERS (Buttons, Modal, Chatbot) ---
+document.addEventListener("DOMContentLoaded", function () {
+  
+  // 1. Modal Close 'X' Button
+  const closeModalBtn = document.getElementById("closeModal");
+  if (closeModalBtn) {
+    closeModalBtn.onclick = () => {
+      document.getElementById("clubModal").classList.add("hidden");
+    };
+  }
+
+  // 2. Dark Mode Toggle
+  const toggleButton = document.getElementById("toggleModeBtn");
+  if (toggleButton) {
+    toggleButton.addEventListener("click", function () {
+      const body = document.body;
+      const isDark = body.classList.toggle("dark-mode");
+      toggleButton.textContent = isDark ? "Switch to Light Mode" : "Switch to Dark Mode";
+    });
+  }
+
+  // 3. Chatbot Toggle (Open/Close)
+  const chatbotBtn = document.getElementById("chatbotBtn");
+  const chatbotWindow = document.getElementById("chatbotWindow");
+  const closeChat = document.getElementById("closeChat");
+
+  if (chatbotBtn && chatbotWindow && closeChat) {
+    chatbotBtn.onclick = () => chatbotWindow.classList.remove("hidden");
+    closeChat.onclick = () => chatbotWindow.classList.add("hidden");
+  }
+
+  // 4. Chatbot Sending Logic
+  const sendChat = document.getElementById("sendChat");
+  const chatInput = document.getElementById("chatInput");
+  
+  if (sendChat && chatInput) {
+    sendChat.onclick = sendMessage;
+    chatInput.addEventListener("keypress", e => {
+      if (e.key === "Enter") sendMessage();
+    });
+  }
+
+  // 5. Initialize Club List
+  createTagButtons();
+  filterClubs();
+});
+
+// --- GLOBAL FUNCTIONS (Can stay outside) ---
+
+// Clicking outside modal to close
 window.addEventListener('click', (e) => {
   const modal = document.getElementById('clubModal');
   if (e.target === modal) {
@@ -238,42 +289,8 @@ window.addEventListener('click', (e) => {
   }
 });
 
-//darkmode
-document.addEventListener("DOMContentLoaded", function () {
-  const toggleButton = document.getElementById("toggleModeBtn");
-
-  toggleButton.addEventListener("click", function () {
-    const body = document.body;
-    const isDark = body.classList.toggle("dark-mode");
-    toggleButton.textContent = isDark ? "Switch to Light Mode" : "Switch to Dark Mode";
-  });
-
-  createTagButtons();
-  filterClubs();
-});
-// Chatbot Logic
-const chatbotBtn = document.getElementById("chatbotBtn");
-const chatbotWindow = document.getElementById("chatbotWindow");
-const closeChat = document.getElementById("closeChat");
-const sendChat = document.getElementById("sendChat");
-const chatInput = document.getElementById("chatInput");
-const chatBody = document.getElementById("chatBody");
-
-chatbotBtn.onclick = () => {
-  chatbotWindow.classList.remove("hidden");
-};
-
-closeChat.onclick = () => {
-  chatbotWindow.classList.add("hidden");
-};
-
-
-sendChat.onclick = sendMessage;
-chatInput.addEventListener("keypress", e => {
-  if (e.key === "Enter") sendMessage();
-});
-
 function sendMessage() {
+  const chatInput = document.getElementById("chatInput");
   const msg = chatInput.value.trim();
   if (!msg) return;
 
@@ -286,6 +303,7 @@ function sendMessage() {
 }
 
 function appendMessage(text, className) {
+  const chatBody = document.getElementById("chatBody");
   const div = document.createElement("div");
   div.className = className;
   div.textContent = text;
@@ -295,16 +313,29 @@ function appendMessage(text, className) {
 
 function botReply(message) {
   const lower = message.toLowerCase();
+  let reply = "";
 
-  let reply = "I can help you find clubs by interest, type, or schedule!";
+  // Check Major Map
+  for (const [major, tags] of Object.entries(majorMap)) {
+    if (lower.includes(major.toLowerCase())) {
+      const suggestedClubs = clubs.filter(c => c.tags.some(t => tags.includes(t)));
+      reply = `Since you're interested in ${major}, check out: ${suggestedClubs.map(c => c.name).join(", ")}.`;
+      break;
+    }
+  }
 
-  if (lower.includes("sport")) reply = "We have Basketball, Table Tennis, Karate, and Chess clubs 🏀";
-  else if (lower.includes("stem") || lower.includes("tech"))
-    reply = "Check out Tech Buzz, Robotics & AI, Game Design, or Code for Change 💻";
-  else if (lower.includes("music"))
-    reply = "You might like Orchestra or Singing Club 🎵";
-  else if (lower.includes("leadership"))
-    reply = "MUN, Debate, PRAMUKA, and GIN are great leadership options 🌍";
+  // Fallback Keywords
+  if (!reply) {
+    if (lower.includes("sport")) reply = "We have Basketball, Table Tennis, Karate, and Chess clubs 🏀";
+    else if (lower.includes("stem") || lower.includes("tech")) reply = "Check out Tech Buzz, Robotics & AI, Game Design, or Code for Change 💻";
+    else if (lower.includes("music")) reply = "You might like Orchestra or Singing Club 🎵";
+    else if (lower.includes("leadership")) reply = "MUN, Debate, PRAMUKA, and GIN are great leadership options 🌍";
+    else if (lower.includes("language")) reply = "We have Korean Culture Club for you!";
+    else if (lower.includes("Cooking")) reply = "Culinary Club will be the best option for you!";
+    else if (lower.includes("Music")) reply = "Check Orchestra MSHS, or Singing club🎵";
+    else if (lower.includes("Writing")) reply = "How about you try Warta Aksara?";
+    else reply = "I can help you find clubs by major (like STEM) or interest (like Sports)!";
+  }
 
   appendMessage(reply, "bot-message");
 }
